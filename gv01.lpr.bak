@@ -54,7 +54,7 @@ begin
     counter:= counter + 1;
      if idcount>13 then idcount:=1
 
-  until counter =52 ;
+  until counter =53 ;
   ScreenDeck();
 
 
