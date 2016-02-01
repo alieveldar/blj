@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="9"/>
+    <BuildModes Active="Default"/>
+    <Units Count="1">
+      <Unit0>
+        <Filename Value="gv01.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="v01"/>
+        <IsVisibleTab Value="True"/>
+        <CursorPos X="6" Y="11"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+      </Unit0>
+    </Units>
+    <JumpHistory Count="6" HistoryIndex="5">
+      <Position1>
+        <Filename Value="gv01.lpr"/>
+        <Caret Line="2" Column="89"/>
+      </Position1>
+      <Position2>
+        <Filename Value="gv01.lpr"/>
+        <Caret Line="19" Column="112"/>
+      </Position2>
+      <Position3>
+        <Filename Value="gv01.lpr"/>
+        <Caret Line="11" Column="39"/>
+      </Position3>
+      <Position4>
+        <Filename Value="gv01.lpr"/>
+        <Caret Line="7" Column="27"/>
+      </Position4>
+      <Position5>
+        <Filename Value="gv01.lpr"/>
+        <Caret Line="25" Column="25" TopLine="2"/>
+      </Position5>
+      <Position6>
+        <Filename Value="gv01.lpr"/>
+        <Caret Line="7" Column="5"/>
+      </Position6>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>
