@@ -1,15 +1,7 @@
 program v01;
-{внимание некоторые переменные не используются}
-TYPE Tdeck = ARRAY [1..13] of integer; {обьявление типа массива}
-     Pdeck = ARRAY [1..52] of integer; {обьявление типа массива}
-VAR Deck : Tdeck; {массив идентификаторов}
-    Pldeck : Pdeck; {массив колоды}
-    curindex : integer;
-    counter : integer;
-    idcount : integer;
-   { ind : integer; индекс элемента массива}
-    val : integer; {вес карты}
-const TWO = 100;
+const SUITNUMBERS = 13;
+      DECKSIZE = 52;
+      TWO = 100;
       THREE = 101;
       FOUR = 102;
       FIVE = 103;
@@ -22,18 +14,26 @@ const TWO = 100;
       QUEEN = 110;
       KING = 111;
       ACE = 112;
-      {SUIT_COUNT = 4; }
+
+TYPE SuitsValue = ARRAY [1..SUITNUMBERS] of integer; {обьявление типа массива}
+     Pdeck = ARRAY [1..DECKSIZE] of integer; {обьявление типа массива}
+VAR SuitsValues : SuitSValue = (TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KING,ACE);
+    DECK : Pdeck; {массив колоды}
+    curindex : integer;
+    counter : integer;
+    idcount : integer;
+
 
 procedure ScreenDeck();
 var a:integer;
     begin
      for a:=1 to 52 do
-         writeln(Pldeck[a]);
+         writeln(DECK[a]);
      end;
 
 begin
 
-  Deck[1]:= TWO;
+  {Deck[1]:= TWO;
   Deck[2]:= THREE;
   Deck[3]:= FOUR;
   Deck[4]:= FIVE ;
@@ -45,12 +45,12 @@ begin
   Deck[10]:= JACK ;
   Deck[11]:= QUEEN ;
   Deck[12]:= KING ;
-  Deck[13]:= ACE ;
+  Deck[13]:= ACE ;}
   counter:=1;
   curindex:=1;
   idcount:=1;
   repeat
-    Pldeck[counter]:= Deck[idcount];
+    DECK[counter]:= SuitsValues[idcount];
     idcount:= idcount + 1;
     counter:= counter + 1;
      if idcount>13 then idcount:=1
