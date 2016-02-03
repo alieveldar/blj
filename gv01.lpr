@@ -1,7 +1,8 @@
 program v01;
-const SUITNUMBERS = 13;
-      DECKSIZE = 52;
-      TWO = 100;
+const SUIT_NUMBERS = 13;
+      DECK_SIZE = 52;
+
+const TWO = 100;
       THREE = 101;
       FOUR = 102;
       FIVE = 103;
@@ -15,16 +16,16 @@ const SUITNUMBERS = 13;
       KING = 111;
       ACE = 112;
 
-TYPE SuitsValue = ARRAY [1..SUITNUMBERS] of integer; {обьявление типа массива}
-     Pdeck = ARRAY [1..DECKSIZE] of integer; {обьявление типа массива}
-VAR SuitsValues : SuitSValue = (TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KING,ACE);
-    DECK : Pdeck; {массив колоды}
-    curindex : integer;
+
+
+VAR SuitsValues :ARRAY [1..SUIT_NUMBERS] of integer = (TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KING,ACE);
+    DECK : ARRAY [1..DECK_SIZE] OF INTEGER; {массив колоды}
+    curlndex : integer;
     counter : integer;
     idcount : integer;
 
 
-procedure ScreenDeck();
+procedure PrintDeck();
 var a:integer;
     begin
      for a:=1 to 52 do
@@ -35,7 +36,7 @@ begin
 
 
   counter:=1;
-  curindex:=1;
+  curlndex:=1;
   idcount:=1;
   repeat
     DECK[counter]:= SuitsValues[idcount];
@@ -44,7 +45,7 @@ begin
      if idcount>13 then idcount:=1
 
   until counter =53 ;
-  ScreenDeck();
+  PrintDeck();
 
 
 
