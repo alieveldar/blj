@@ -24,18 +24,18 @@ VAR SuitsValues :ARRAY [1..SUIT_NUMBERS] of integer = (TWO,THREE,FOUR,FIVE,SIX,S
 procedure PrintDeck();
   var a:integer;
 begin
-   for a:=1 to DECK_SIZE do
+   for a := 1 to DECK_SIZE do
       writeln(DECK[a]);
 end;
 
 begin
-  counter:=1;
-  idCount:=1;
+  counter := 1;
+  idCount := 1;
   repeat
-    DECK[counter]:= SuitsValues[idCount];
-    idCount:= idCount + 1;
-    counter:= counter + 1;
-     if idcount > SUIT_NUMBERS then idCount:=1
-  until counter = DECK_SIZE + 1 ;
+    DECK[counter] := SuitsValues[idCount];
+    idCount := idCount + 1;
+    counter := counter + 1;
+     if idcount > SUIT_NUMBERS then idCount := 1
+  until counter = DECK_SIZE + 1;
   PrintDeck();
 end.
