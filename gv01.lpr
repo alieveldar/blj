@@ -20,7 +20,6 @@ const TWO = 100;
 
 VAR SuitsValues :ARRAY [1..SUIT_NUMBERS] of integer = (TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KING,ACE);
     DECK : ARRAY [1..DECK_SIZE] OF INTEGER; {массив колоды}
-    curlndex : integer;
     counter : integer;
     idcount : integer;
 
@@ -28,7 +27,7 @@ VAR SuitsValues :ARRAY [1..SUIT_NUMBERS] of integer = (TWO,THREE,FOUR,FIVE,SIX,S
 procedure PrintDeck();
 var a:integer;
     begin
-     for a:=1 to 52 do
+     for a:=1 to DECK_SIZE do
          writeln(DECK[a]);
      end;
 
@@ -36,15 +35,14 @@ begin
 
 
   counter:=1;
-  curlndex:=1;
   idcount:=1;
   repeat
     DECK[counter]:= SuitsValues[idcount];
     idcount:= idcount + 1;
     counter:= counter + 1;
-     if idcount>13 then idcount:=1
+     if idcount>SUIT_NUMBERS then idcount:=1
 
-  until counter =53 ;
+  until counter = DECK_SIZE + 1 ;
   PrintDeck();
 
 
