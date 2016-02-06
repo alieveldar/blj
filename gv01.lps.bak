@@ -3,46 +3,26 @@
   <ProjectSession>
     <Version Value="9"/>
     <BuildModes Active="Default"/>
-    <Units Count="1">
+    <Units Count="2">
       <Unit0>
         <Filename Value="gv01.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="v01"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="2"/>
-        <CursorPos X="25" Y="25"/>
-        <UsageCount Value="22"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="21" Y="46"/>
+        <UsageCount Value="26"/>
       </Unit0>
+      <Unit1>
+        <Filename Value="../testtesttest.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="140" Y="30"/>
+        <UsageCount Value="10"/>
+      </Unit1>
     </Units>
-    <JumpHistory Count="4" HistoryIndex="3">
-      <Position1>
-        <Filename Value="gv01.lpr"/>
-        <Caret Line="2" Column="89"/>
-      </Position1>
-      <Position2>
-        <Filename Value="gv01.lpr"/>
-        <Caret Line="19" Column="112"/>
-      </Position2>
-      <Position3>
-        <Filename Value="gv01.lpr"/>
-        <Caret Line="11" Column="39"/>
-      </Position3>
-      <Position4>
-        <Filename Value="gv01.lpr"/>
-        <Caret Line="7" Column="27"/>
-      </Position4>
-    </JumpHistory>
+    <General>
+      <ActiveWindowIndexAtStart Value="-1"/>
+    </General>
+    <JumpHistory HistoryIndex="-1"/>
   </ProjectSession>
-  <Debugging>
-    <BreakPoints Count="1">
-      <Item1>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="gv01.lpr"/>
-        <Line Value="7"/>
-      </Item1>
-    </BreakPoints>
-  </Debugging>
 </CONFIG>
