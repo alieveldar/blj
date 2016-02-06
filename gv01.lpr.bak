@@ -44,7 +44,7 @@ procedure PrintDeck(var theDeck:DeckType);
 begin
    for a := 1 to Length(theDeck) do
    begin
-   theDeck[a] := n;
+   n := theDeck[a];
    WriteLn(n);
    case n of
    100:writeln('TWO');

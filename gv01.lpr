@@ -45,7 +45,7 @@ begin
    for a := 1 to Length(theDeck) do
    begin
    n := theDeck[a];
-   WriteLn(n);
+
    case n of
    100:writeln('TWO');
    101:WriteLn('THREE');
