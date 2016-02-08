@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="9"/>
+    <BuildModes Active="Default"/>
+    <Units Count="1">
+      <Unit0>
+        <Filename Value="gv01.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="v01"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="14"/>
+        <CursorPos X="124" Y="38"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+    </Units>
+    <JumpHistory Count="11" HistoryIndex="10">
+      <Position1>
+        <Filename Value="gv01.lpr"/>
+        <Caret Line="18" Column="92"/>
+      </Position1>
+      <Position2>
+        <Filename Value="gv01.lpr"/>
+        <Caret Line="12" Column="7"/>
+      </Position2>
+      <Position3>
+        <Filename Value="gv01.lpr"/>
+        <Caret Line="14" Column="63"/>
+      </Position3>
+      <Position4>
+        <Filename Value="gv01.lpr"/>
+        <Caret Line="6" Column="25"/>
+      </Position4>
+      <Position5>
+        <Filename Value="gv01.lpr"/>
+        <Caret Line="9" Column="25"/>
+      </Position5>
+      <Position6>
+        <Filename Value="gv01.lpr"/>
+        <Caret Line="52" Column="3" TopLine="35"/>
+      </Position6>
+      <Position7>
+        <Filename Value="gv01.lpr"/>
+        <Caret Line="9" Column="7"/>
+      </Position7>
+      <Position8>
+        <Filename Value="gv01.lpr"/>
+        <Caret Line="6" Column="7"/>
+      </Position8>
+      <Position9>
+        <Filename Value="gv01.lpr"/>
+        <Caret Line="11" Column="18"/>
+      </Position9>
+      <Position10>
+        <Filename Value="gv01.lpr"/>
+        <Caret Line="74" Column="2" TopLine="61"/>
+      </Position10>
+      <Position11>
+        <Filename Value="gv01.lpr"/>
+        <Caret Line="83" Column="46" TopLine="61"/>
+      </Position11>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>

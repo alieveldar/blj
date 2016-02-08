@@ -1,16 +1,10 @@
 program v01;
-
 const SUIT_CARDS_NUMBER = 13;
       SUITS_NUMBER      = 4;
       DECK_SIZE         = SUIT_CARDS_NUMBER * SUITS_NUMBER;
- 
+
       TWO   = 100;
-
-const SUIT_NUMBERS = 13;
-      DECK_SIZE    = 52;
-
-const TWO   = 100;
-	  THREE = 101;
+      THREE = 101;
       FOUR  = 102;
       FIVE  = 103;
       SIX   = 104;
@@ -23,7 +17,6 @@ const TWO   = 100;
       KING  = 111;
       ACE   = 112;
 type
-
 	DeckType = ARRAY [1..DECK_SIZE] OF integer;
 var
     SuitValues :ARRAY [1..SUIT_CARDS_NUMBER] of integer = (TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE);
@@ -31,18 +24,6 @@ var
     counter : integer;
     suitIndex : integer;
     cardInSuitIndex : integer;
-procedure FillDeck(var theDeck:DeckType);
-begin
-   counter := 1;
-  for suitIndex := 1 to SUITS_NUMBER do
-  begin
-    for cardInSuitIndex := 1 to Length(SuitValues) do
-    begin
-      deck[counter] := SuitValues[cardInSuitIndex];
-      counter := counter + 1;
-    end;
-  end;
-end;
 
 procedure PrintDeck(var theDeck:DeckType);
   var a:integer;
@@ -71,27 +52,16 @@ end;
 
 end;
 
-begin
-  FillDeck(deck);
-  PrintDeck(deck);
-  idCount : integer;
-
-procedure PrintDeck();
-  var a:integer;
-begin
-   for a := 1 to DECK_SIZE do
-      writeln(DECK[a]);
-end;
 
 begin
   counter := 1;
-  idCount := 1;
-  repeat
-    DECK[counter] := SuitsValues[idCount];
-    idCount := idCount + 1;
-    counter := counter + 1;
-     if idcount > SUIT_NUMBERS then idCount := 1
-  until counter = DECK_SIZE + 1;
-  PrintDeck();
-
+  for suitIndex := 1 to SUITS_NUMBER do
+  begin
+    for cardInSuitIndex := 1 to Length(SuitValues) do
+    begin
+      deck[counter] := SuitValues[cardInSuitIndex];
+      counter := counter + 1;
+    end;
+  end;
+  PrintDeck(deck);
 end.
