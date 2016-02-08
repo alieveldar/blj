@@ -1,17 +1,16 @@
 program v01;
-<<<<<<< HEAD
+
 const SUIT_CARDS_NUMBER = 13;
       SUITS_NUMBER      = 4;
       DECK_SIZE         = SUIT_CARDS_NUMBER * SUITS_NUMBER;
  
       TWO   = 100;
-=======
+
 const SUIT_NUMBERS = 13;
       DECK_SIZE    = 52;
 
 const TWO   = 100;
->>>>>>> 1028169863bfdad487492ca51e5e4f4e9baeb145
-      THREE = 101;
+	  THREE = 101;
       FOUR  = 102;
       FIVE  = 103;
       SIX   = 104;
@@ -23,17 +22,13 @@ const TWO   = 100;
       QUEEN = 110;
       KING  = 111;
       ACE   = 112;
-<<<<<<< HEAD
 type
-=======
->>>>>>> 1028169863bfdad487492ca51e5e4f4e9baeb145
 
 	DeckType = ARRAY [1..DECK_SIZE] OF integer;
 var
     SuitValues :ARRAY [1..SUIT_CARDS_NUMBER] of integer = (TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE);
     deck : DeckType;
     counter : integer;
-<<<<<<< HEAD
     suitIndex : integer;
     cardInSuitIndex : integer;
 procedure FillDeck(var theDeck:DeckType);
@@ -79,8 +74,7 @@ end;
 begin
   FillDeck(deck);
   PrintDeck(deck);
-=======
-    idCount : integer;
+  idCount : integer;
 
 procedure PrintDeck();
   var a:integer;
@@ -99,5 +93,5 @@ begin
      if idcount > SUIT_NUMBERS then idCount := 1
   until counter = DECK_SIZE + 1;
   PrintDeck();
->>>>>>> 1028169863bfdad487492ca51e5e4f4e9baeb145
+
 end.
