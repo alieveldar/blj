@@ -9,7 +9,7 @@
       </Flags>
       <SessionStorage Value="InProjectDir"/>
       <MainUnit Value="0"/>
-      <Title Value="gv01"/>
+      <Title Value="v01"/>
       <UseAppBundle Value="False"/>
       <ResourceType Value="res"/>
     </General>
@@ -33,16 +33,16 @@
     </RunParams>
     <Units Count="1">
       <Unit0>
-        <Filename Value="gv01.lpr"/>
+        <Filename Value="v01.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="v01"/>
+        <UnitName Value="testing"/>
       </Unit0>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="11"/>
     <Target>
-      <Filename Value="gv01"/>
+      <Filename Value="v01"/>
     </Target>
     <SearchPaths>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
