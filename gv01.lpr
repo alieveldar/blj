@@ -20,14 +20,20 @@ const
   ACE = 112;
 type
   DeckType = array of integer;
+  HandType = array of integer;
 var
   SuitValues: array [1..SUIT_CARDS_NUMBER] of
-  integer = (TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE);
+  integer = (TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN,
+    JACK, QUEEN, KING, ACE);
   deck: DeckType;
+  Dealer: HandType;
+  Player: HandType;
   counter: integer;
   suitIndex: integer;
   cardInSuitIndex: integer;
   hand: integer;
+  Name: string;
+  Answer: string;
 
   procedure ShuffleDeck(var theDeck: DeckType);
   const
@@ -37,10 +43,10 @@ var
     shufflecount2: integer;
     temp1: integer;
     temp2: integer;
-    a: integer;
+    counter: integer;
   begin
     Randomize;
-    for a := 1 to shuffletime do
+    for counter := 1 to shuffletime do
     begin
 
       shufflecount1 := 1 + Random(Length(theDeck));
@@ -67,31 +73,37 @@ var
     end;
   end;
 
+  procedure PrintCArd(card: integer);
+  var
+    n: integer;
+  begin
+    n := card;
+    case n of
+      100: writeln('TWO');
+      101: Writeln('THREE');
+      102: Writeln('FOUR');
+      103: Writeln('FIVE');
+      104: Writeln('SIX');
+      105: Writeln('SEVEN');
+      106: Writeln('EIGHT');
+      107: Writeln('NINE');
+      108: Writeln('TEN');
+      109: Writeln('JACK');
+      110: Writeln('QUEEN');
+      111: Writeln('KING');
+      112: Writeln('ACE');
+    end;
+  end;
 
   procedure PrintDeck(var theDeck: DeckType);
   var
-    a: integer;
-    n: integer;
+    curIndex: integer;
+    arrelement: integer;
   begin
-    for a := 1 to Length(theDeck) do
+    for curIndex := 0 to Length(theDeck) do
     begin
-      n := theDeck[a];
-
-      case n of
-        100: writeln('TWO');
-        101: WriteLn('THREE');
-        102: WriteLn('FOUR');
-        103: WriteLn('FIVE');
-        104: WriteLn('SIX');
-        105: WriteLn('SEVEN');
-        106: WriteLn('EIGHT');
-        107: WriteLn('NINE');
-        108: WriteLn('TEN');
-        109: WriteLn('JACK');
-        110: WriteLn('QUEEN');
-        111: WriteLn('KING');
-        112: WriteLn('ACE');
-      end;
+      arrelement := theDeck[curIndex];
+      PrintCard(arrelement);
     end;
   end;
 
@@ -100,46 +112,86 @@ var
     temp1: integer;
     temp2: integer;
   begin
-    temp1 := Length(theDeck); {52}
-    temp2 := theDeck[temp1];  {112}
-    theDeck[temp1] := 0;   {0}
-    temp1 := temp1 - 1; {51}
+    temp1 := Length(theDeck);
+    temp2 := theDeck[temp1];
+    theDeck[temp1] := 0;
+    temp1 := temp1 - 1;
     Setlength(theDeck, temp1);
     PassCard := temp2;
-    {writeln('VVVVVVV  ', PassCard);}
+
   end;
 
-  procedure PrintUseCArd(temps: integer);
-  begin
-    writeln('Card from Deck is ', temps);
-  end;
 
   procedure CheckDeck(var theDeck: DeckType);
   var
-    a: integer;
-    n: integer;
+    counter: integer;
+    arrelement: integer;
     c: integer;
   begin
     c := 0;
     writeln('Deck size is  ', Length(theDeck));
-    for a := 1 to Length(theDeck) do
+    for counter := 1 to Length(theDeck) do
     begin
-      n := theDeck[a];
-      case n of
+      arrelement := theDeck[counter];
+      case arrelement of
         100: c := c + 1;
       end;
     end;
     Writeln(c);
   end;
 
-begin
-  FillDeck(deck);
-  ShuffleDeck(deck);
-  PrintDeck(deck);
-  {CheckDeck(deck);}
-  hand := PassCard(deck);
-  PrintUseCard(hand);
-  {CheckDeck(deck); {Minitest of Deck size and suits} }
-  PrintDeck(deck);
+  procedure DealCards(var theHand: HandType);
+  var
+    size, newSize, curIndex: integer;
 
+  begin
+    size := Length(theHand);
+    curIndex := size;
+    newSize := size + 1;
+    SetLength(theHand, newSize);
+    theHand[curIndex] := PassCard(deck);
+
+  end;
+
+  procedure PrintHand(var theHand: HandType; var Name: string);
+  var
+    temp1: integer = 0;
+    temp2: integer = 0;
+  begin
+    writeln('==========');
+    Writeln(Name: 30, ' CARDS IS  ');
+    for temp1 := 0 to Length(theHand) - 1 do
+    begin
+      temp2 := theHand[temp1];
+      PrintCard(temp2);
+    end;
+    writeln('==========');
+  end;
+
+  function Ask(var str: string): boolean;
+  var
+    answer: string;
+  begin
+    writeln(str);
+    Readln(answer);
+    case answer of
+      'Y': Ask := True;
+      'y': Ask := True;
+    end;
+  end;
+
+begin
+  Answer := 'CLOSE THE PROGRAMM? Type Y or N';
+  FillDeck(deck);
+  PrintDeck(deck);
+  ShuffleDeck(deck);
+  DealCards(Dealer);
+  DealCards(Dealer);
+  DealCards(Player);
+  DealCards(Player);
+  Name := 'Dealer';
+  PrintHand(Dealer, Name);
+  Name := 'Player';
+  PrintHand(Player, Name);
+  Writeln(Ask(Answer));
 end.

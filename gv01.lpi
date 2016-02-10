@@ -10,7 +10,6 @@
       <SessionStorage Value="InProjectDir"/>
       <MainUnit Value="0"/>
       <Title Value="gv01"/>
-      <UseAppBundle Value="False"/>
       <ResourceType Value="res"/>
     </General>
     <i18n>
@@ -35,7 +34,7 @@
       <Unit0>
         <Filename Value="gv01.lpr"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="v01"/>
+        <UnitName Value="testing"/>
       </Unit0>
     </Units>
   </ProjectOptions>
@@ -45,6 +44,7 @@
       <Filename Value="gv01"/>
     </Target>
     <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
   </CompilerOptions>
