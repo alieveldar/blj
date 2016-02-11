@@ -62,7 +62,7 @@ var
   procedure FillDeck(var theDeck: DeckType);
   begin
     SetLength(theDeck, DECK_SIZE);
-    counter := 1;
+    counter := 0;
     for suitIndex := 1 to SUITS_NUMBER do
     begin
       for cardInSuitIndex := 1 to Length(SuitValues) do
@@ -130,7 +130,7 @@ var
   begin
     c := 0;
     writeln('Deck size is  ', Length(theDeck));
-    for counter := 1 to Length(theDeck) do
+    for counter := 0 to Length(theDeck) do
     begin
       arrelement := theDeck[counter];
       case arrelement of
@@ -183,7 +183,7 @@ var
 begin
   Answer := 'CLOSE THE PROGRAMM? Type Y or N';
   FillDeck(deck);
-  PrintDeck(deck);
+  CheckDeck(deck);
   ShuffleDeck(deck);
   DealCards(Dealer);
   DealCards(Dealer);
@@ -193,5 +193,6 @@ begin
   PrintHand(Dealer, Name);
   Name := 'Player';
   PrintHand(Player, Name);
+  CheckDeck(deck);
   Writeln(Ask(Answer));
 end.
