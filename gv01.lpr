@@ -34,6 +34,9 @@ var
   hand: integer;
   Name: string;
   Answer: string;
+  TEMP: integer;
+  Score: integer;
+  Score2: integer;
 
   procedure ShuffleDeck(var theDeck: DeckType);
   const
@@ -46,7 +49,7 @@ var
     counter: integer;
   begin
     Randomize;
-    for counter := 1 to shuffletime do
+    for counter := 0 to shuffletime do
     begin
 
       shufflecount1 := 1 + Random(Length(theDeck));
@@ -146,6 +149,7 @@ var
 
   begin
     size := Length(theHand);
+    WRITELN('ПЕРВОНАЧАЛЬНЫЙ ПАЗМЕР РУКИ!!!', size);
     curIndex := size;
     newSize := size + 1;
     SetLength(theHand, newSize);
@@ -174,25 +178,121 @@ var
   begin
     writeln(str);
     Readln(answer);
+    Ask := False;
     case answer of
       'Y': Ask := True;
       'y': Ask := True;
     end;
   end;
 
+  function GetCardScore(var card: integer): integer;
+  begin
+    case card of
+      100: GetCardScore := 2;
+      101: GetCardScore := 3;
+      102: GetCardScore := 4;
+      103: GetCardScore := 5;
+      104: GetCardScore := 6;
+      105: GetCardscore := 7;
+      106: GetCardScore := 8;
+      107: GetCardScore := 9;
+      108: GetCardScore := 10;
+      109: GetCardScore := 10;
+      110: GetCardScore := 10;
+      111: GetCardScore := 10;
+      112: GetCardScore := 11;
+    end;
+  end;
+
+  function GetHandScore(var theHand: HandType): integer;
+  var
+    counter: integer;
+    score: integer;
+    temp: integer;
+    summ: integer;
+  begin
+    score := 0;
+    temp := 0;
+    for counter := 0 to Length(theHand) do
+    begin
+      score := GetCardScore(theHand[counter]) + score;
+
+    end;
+    GetHandScore := score;
+    score := 0;
+
+  end;
+
+  function HandCheck(var theHand: HandType): boolean;
+  var
+    counter: integer;
+    score: integer;
+
+  begin
+    for counter := 0 to Length(theHand) do
+      score := GetHandScore(theHand);
+    if score <= 21 then
+      HandCheck := True
+    else
+      HandCheck := False;
+  end;
+
+  procedure PlayerSelection();
+  begin
+    Answer := 'Would you like to take another card? Type Y or N';
+    Ask(Answer);
+    HandCheck(Player);
+    repeat
+      DealCards(Player);
+      PrintHand(Player, Name);
+      writeln(GetHandScore(Player));
+    until Ask(Answer) = False or HandCheck(Player) = False;
+
+  end;
+
+  procedure GetWinner(var playhand: HandType; var dealhand: HandType);
+  var
+    playerscore: integer;
+    dealerscore: integer;
+  begin
+    playerscore := GetHandScore(playhand);
+    dealerscore := GetHandScore(dealhand);
+    if playerscore > dealerscore then
+      writeln('You WIN!!! With -  ', playerscore, 'scores      ',
+        'Dealerscore is  ', dealerscore)
+    else if playerscore = dealerscore then
+      writeln('NO winner you score is  ', playerscore, '   Dealerscore is   ',
+        dealerscore)
+    else
+      writeln('You loose with    ', playerscore, '    Dealer score is   ', dealerscore);
+  end;
+
+
+
 begin
-  Answer := 'CLOSE THE PROGRAMM? Type Y or N';
+  Answer := '';
+  Name := 'Ali';
+  Score := 0;
+  Score2 := 0;
   FillDeck(deck);
-  CheckDeck(deck);
   ShuffleDeck(deck);
-  DealCards(Dealer);
+  DealCards(Player);
   DealCards(Dealer);
   DealCards(Player);
   DealCards(Player);
-  Name := 'Dealer';
-  PrintHand(Dealer, Name);
-  Name := 'Player';
+  DealCards(Dealer);
   PrintHand(Player, Name);
-  CheckDeck(deck);
-  Writeln(Ask(Answer));
+  writeln('this is proc out scor  ', GetHandScore(Player));
+  Score := GetHandScore(Player);
+  Writeln('THIS IS SCORE PROCEDURE     ', Score);
+  HandCheck(Player);
+  HandCheck(Dealer);
+  GetWinner(Player, Dealer);
+  Score2 := GetHandScore(Dealer);
+  writeln('DEALERS ', Score2);
+  Name := 'not ali!!';
+  PrintHand(Dealer, Name);
+
+
+
 end.
