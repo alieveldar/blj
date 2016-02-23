@@ -2,7 +2,9 @@ program testing;
 
 uses
   Crt;
-label start;
+
+label
+  start;
 
 const
   SUIT_CARDS_NUMBER = 13;
@@ -317,6 +319,8 @@ begin
   writeln('');
   Delay(1500);
   start:
+    SetLength(Player, 0);
+  SetLength(Dealer, 0);
   ClrScr;
   FillDeck(deck);
   ShuffleDeck(deck);
@@ -360,7 +364,8 @@ begin
   writeln('');
   writeln('');
   writeln('');
-  Answer:= '###############_______Would you like to try again? (Y or N)_______##############';
-  if Ask(answer) =true then goto  start;
+  Answer := '###############_______Would you like to try again? (Y or N)_______##############';
+  if Ask(answer) = True then
+    goto  start;
 
 end.
