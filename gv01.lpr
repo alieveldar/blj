@@ -1,5 +1,9 @@
 program testing;
 
+uses
+  Crt;
+label start;
+
 const
   SUIT_CARDS_NUMBER = 13;
   SUITS_NUMBER = 4;
@@ -40,7 +44,7 @@ var
 
   procedure ShuffleDeck(var theDeck: DeckType);
   const
-    shuffletime = 10000;
+    shuffletime = 15510;
   var
     shufflecount1: integer;
     shufflecount2: integer;
@@ -52,8 +56,8 @@ var
     for counter := 0 to shuffletime do
     begin
 
-      shufflecount1 := 1 + Random(Length(theDeck));
-      shufflecount2 := 1 + Random(Length(theDeck));
+      shufflecount1 := Random(Length(theDeck));
+      shufflecount2 := Random(Length(theDeck));
       temp1 := theDeck[shufflecount1];
       temp2 := theDeck[shufflecount2];
       theDeck[shufflecount1] := temp2;
@@ -63,7 +67,9 @@ var
   end;
 
   procedure FillDeck(var theDeck: DeckType);
+
   begin
+    cardInSuitIndex := 0;
     SetLength(theDeck, DECK_SIZE);
     counter := 0;
     for suitIndex := 1 to SUITS_NUMBER do
@@ -103,7 +109,7 @@ var
     curIndex: integer;
     arrelement: integer;
   begin
-    for curIndex := 0 to Length(theDeck) do
+    for curIndex := 0 to (Length(theDeck) - 1) do
     begin
       arrelement := theDeck[curIndex];
       PrintCard(arrelement);
@@ -115,7 +121,7 @@ var
     temp1: integer;
     temp2: integer;
   begin
-    temp1 := Length(theDeck);
+    temp1 := (Length(theDeck) - 1);
     temp2 := theDeck[temp1];
     theDeck[temp1] := 0;
     temp1 := temp1 - 1;
@@ -133,7 +139,7 @@ var
   begin
     c := 0;
     writeln('Deck size is  ', Length(theDeck));
-    for counter := 0 to Length(theDeck) do
+    for counter := 0 to (Length(theDeck) - 1) do
     begin
       arrelement := theDeck[counter];
       case arrelement of
@@ -149,7 +155,6 @@ var
 
   begin
     size := Length(theHand);
-    WRITELN('ПЕРВОНАЧАЛЬНЫЙ ПАЗМЕР РУКИ!!!', size);
     curIndex := size;
     newSize := size + 1;
     SetLength(theHand, newSize);
@@ -163,8 +168,7 @@ var
     temp2: integer = 0;
   begin
     writeln('==========');
-    Writeln(Name: 30, ' CARDS IS  ');
-    for temp1 := 0 to Length(theHand) - 1 do
+    for temp1 := 0 to (Length(theHand) - 1) do
     begin
       temp2 := theHand[temp1];
       PrintCard(temp2);
@@ -208,12 +212,10 @@ var
   var
     counter: integer;
     score: integer;
-    temp: integer;
-    summ: integer;
   begin
     score := 0;
     temp := 0;
-    for counter := 0 to Length(theHand) do
+    for counter := 0 to (Length(theHand) - 1) do
     begin
       score := GetCardScore(theHand[counter]) + score;
 
@@ -238,61 +240,127 @@ var
   end;
 
   procedure PlayerSelection();
+  var
+    choice: boolean;
+    check: boolean;
   begin
-    Answer := 'Would you like to take another card? Type Y or N';
-    Ask(Answer);
-    HandCheck(Player);
-    repeat
+    Answer := '***********Would you like to take another card? Type Y or N***********';
+    choice := Ask(Answer);
+    check := HandCheck(Player);
+    if choice = True then
+    begin
       DealCards(Player);
       PrintHand(Player, Name);
       writeln(GetHandScore(Player));
-    until Ask(Answer) = False or HandCheck(Player) = False;
-
+      PlayerSelection();
+    end;
   end;
 
   procedure GetWinner(var playhand: HandType; var dealhand: HandType);
   var
     playerscore: integer;
     dealerscore: integer;
+    playerstatus: boolean;
+    dealerstatus: boolean;
   begin
+    playerstatus := HandCheck(playhand);
+    dealerstatus := HandCheck(dealhand);
     playerscore := GetHandScore(playhand);
     dealerscore := GetHandScore(dealhand);
-    if playerscore > dealerscore then
-      writeln('You WIN!!! With -  ', playerscore, 'scores      ',
-        'Dealerscore is  ', dealerscore)
-    else if playerscore = dealerscore then
-      writeln('NO winner you score is  ', playerscore, '   Dealerscore is   ',
-        dealerscore)
-    else
-      writeln('You loose with    ', playerscore, '    Dealer score is   ', dealerscore);
+    writeln('***********Player score is     (', playerscore, ')***********');
+    WriteLn('***********Dealer score is     (', dealerscore, ')***********');
+
+    if playerstatus > dealerstatus then
+      writeln('***********You Win!***********');
+    if playerstatus < dealerstatus then
+      writeln('***********Dealer Win***********');
+    if playerstatus = dealerstatus then
+    begin
+      if playerstatus = False then
+        writeln('***********Nobody Win!!!***********')
+      else if playerscore > dealerscore then
+        writeln('***********You WIN!!***********')
+      else if playerscore = dealerscore then
+        writeln('***********Nobody WIN!!***********')
+      else
+        writeln('***********Dealer WIN!!***********');
+    end;
+
   end;
 
-
+  procedure DealerTakesCards();
+  begin
+    if GetHandScore(Dealer) < 17 then
+    begin
+      DealCards(Dealer);
+      DealerTakesCards();
+    end;
+  end;
 
 begin
-  Answer := '';
-  Name := 'Ali';
-  Score := 0;
-  Score2 := 0;
+  ClrScr;
+  Name := 'Player';
+  writeln('');
+  writeln('');
+  writeln('');
+  writeln('');
+  writeln('');
+  writeln('');
+  writeln('');
+  writeln('==================== Hello Welcome to BlackJack game ====================');
+  writeln('');
+  writeln('');
+  writeln('');
+  writeln('');
+  writeln('');
+  writeln('');
+  writeln('');
+  Delay(1500);
+  start:
+  ClrScr;
   FillDeck(deck);
   ShuffleDeck(deck);
   DealCards(Player);
-  DealCards(Dealer);
-  DealCards(Player);
   DealCards(Player);
   DealCards(Dealer);
+  DealCards(Dealer);
+  delay(1500);
+  writeln('');
+  writeln('');
+  writeln('');
+  writeln('');
+  writeln('');
+  writeln('');
+  writeln('');
+  writeln('********Now the cards are dealt********');
+  Delay(1200);
+  writeln('**** This is you card and scores****');
+  delay(1000);
   PrintHand(Player, Name);
-  writeln('this is proc out scor  ', GetHandScore(Player));
-  Score := GetHandScore(Player);
-  Writeln('THIS IS SCORE PROCEDURE     ', Score);
-  HandCheck(Player);
-  HandCheck(Dealer);
-  GetWinner(Player, Dealer);
-  Score2 := GetHandScore(Dealer);
-  writeln('DEALERS ', Score2);
-  Name := 'not ali!!';
+  Delay(1000);
+  WriteLn('');
+  WriteLn('');
+  WriteLn('');
+  WriteLn('');
+  writeln('You score is  (', GetHandScore(Player), ')');
+  PlayerSelection();
+  delay(1200);
+  ClrScr;
+  WriteLn('');
+  WriteLn('');
+  WriteLn('');
+  WriteLn('');
+  DealerTakesCards();
+  Name := 'Dealer';
+  WriteLn('This Is Dealer hand');
   PrintHand(Dealer, Name);
-
-
+  GetWinner(Player, Dealer);
+  delay(1500);
+  writeln('');
+  writeln('');
+  writeln('');
+  writeln('');
+  Answer:= '###############_______Would you like to try again? (Y or N)_______##############';
+  if Ask(answer) =true then goto  start;
 
 end.

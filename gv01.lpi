@@ -47,31 +47,6 @@
       <IncludeFiles Value="$(ProjOutDir)"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
-    <Parsing>
-      <SyntaxOptions>
-        <IncludeAssertionCode Value="True"/>
-      </SyntaxOptions>
-    </Parsing>
-    <CodeGeneration>
-      <Checks>
-        <IOChecks Value="True"/>
-        <RangeChecks Value="True"/>
-        <OverflowChecks Value="True"/>
-        <StackChecks Value="True"/>
-      </Checks>
-      <VerifyObjMethodCallValidity Value="True"/>
-    </CodeGeneration>
-    <Linking>
-      <Debugging>
-        <UseExternalDbgSyms Value="True"/>
-      </Debugging>
-    </Linking>
-    <Other>
-      <Verbosity>
-        <ShoLineNum Value="True"/>
-        <ShowDebugInfo Value="True"/>
-      </Verbosity>
-    </Other>
   </CompilerOptions>
   <Debugging>
     <Exceptions Count="3">
